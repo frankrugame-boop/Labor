@@ -4,6 +4,6 @@ publish_to: none
 environment:
   sdk: ^3.8.1 # IMPORTANT: Adjust this to match your Dart SDK version or a compatible range
 workspace:
-  - cli
+  - dart_application_1
   - command_runner
   - wikipedia
