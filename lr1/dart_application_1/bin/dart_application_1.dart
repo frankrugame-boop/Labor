@@ -1,19 +1,10 @@
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:command_runner/command_runner.dart';
 
-const version = '0.0.1'; // Add this line
-void main(List<String> arguments) {
-   if (arguments.isEmpty || arguments.first == 'help') {
-    printUsage();
-  } else if (arguments.first == 'version') {
-    print('Dartpedia CLI version $version');
-  } else if (arguments.first == 'wikipedia') { // Changed to 'wikipedia'
-    // Pass all arguments *after* 'wikipedia' to searchWikipedia
-    final inputArgs = arguments.length > 1 ? arguments.sublist(1) : null;
-    searchWikipedia(inputArgs); // Call searchWikipedia (no 'await' needed here for main)
-  } else {
-    printUsage(); // Catch all for any unrecognized command.
-  }
+void main(List<String> arguments) async {
+  var runner = CommandRunner();
+  await runner.run(arguments);
 }
 
 void searchWikipedia(List<String>? arguments) async {
